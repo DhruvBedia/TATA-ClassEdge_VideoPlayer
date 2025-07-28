@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TATA ClassEdge Simulator Video Player</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; }
+    .video-title { font-size: 1.5rem; margin: 20px 0; }
+    iframe { border-radius: 10px; box-shadow: 0 0 10px #999; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="TATA ClassEdge Logo.png" alt="TATA ClassEdge Logo" class="logo" style="height: 150px;">
+    <div class="title-box">
+      <h1 class="main-title">TATA ClassEdge Simulator Video Player</h1>
+      <p class="subtitle">for a <a href="https://scratch.mit.edu/projects/1197558533/" target="_blank" rel="noopener">Scratch Project</a></p>
+    </div>
+  </header>
+
+  <div class="player-container">
+    <h2 class="video-title" id="videoTitle">🎬 Loading video...</h2>
+    
+    <iframe 
+      id="videoPlayer"
+      width="900"
+      height="506"
+      src=""
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    // 🎞️ Video data list
+    const videoMap = {
+      "englangnounsc1": {
+        title: "Class 1 | English Language - Nouns",
+        youtubeId: "6h3V-Tm_tNs"
+      },
+      "englangpronounsc1": {
+        title: "Class 1 | English Language - Pronouns",
+        youtubeId: "B_yEh8rdkUc"
+      },
+      "englangcnandpnc1": {
+        title: "Class 1 | English Language - Common Nouns and Proper Nouns",
+        youtubeId: "7iEr7EZiMi0"
+      }
+      "englangposc1": {
+        title: "Class 1 | English Language - Parts of Speech",
+        youtubeId: "zE_VlzZaXwg"
+      }
+      "englangabstractnounsc1": {
+        title: "Class 1 | English Language - Abstract Nouns",
+        youtubeId: "gPUtfOJ0Qcs"
+      }
+      "englangcollectivenounsc1": {
+        title: "Class 1 | English Language - Collective Nouns",
+        youtubeId: "kBGCiekOhEg"
+      }
+    };
+
+    // 🔍 Get video name from URL: video.html?video=maths
+    const params = new URLSearchParams(window.location.search);
+    const selectedVideo = params.get("video");
+
+    if (selectedVideo && videoMap[selectedVideo]) {
+      const { title, youtubeId } = videoMap[selectedVideo];
+      document.getElementById("videoPlayer").src = `https://www.youtube.com/embed/${youtubeId}`;
+      document.getElementById("videoTitle").textContent = `${title}`;
+    } else {
+      document.getElementById("videoPlayer").src = "";
+      document.getElementById("videoTitle").textContent = "404 - ⚠️ Video not available or selected";
+    }
+  </script>
+  <footer style="margin-top: 50px; font-size: 0.9rem; color: #555;">
+  <hr style="margin-bottom: 10px;">
+  <p>
+    This webpage is an independent simulation created for the Scratch project id  
+    <a href="https://scratch.mit.edu/projects/1197558533/" target="_blank" rel="noopener">#1197558533</a>.  
+    It is not affiliated with or officially endorsed by TATA ClassEdge or Scratch.
+  </p>
+  <p>
+    Developed by the user <strong><a href="https://scratch.mit.edu/users/Pole25" target="_blank" rel="noopener">Pole25</a></strong> for educational and creative purposes.<br>
+    Credits to:<br>
+    <a href="https://youtube.com/@educationalvideosforlearning" target="_blank" rel="noopener">EducationalVideos</a><br>
+    All video content belongs to their respective creators and channels.  
+  </p>
+</footer>
+
+</body>
+</html>
